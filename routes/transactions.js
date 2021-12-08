@@ -15,15 +15,21 @@ router.post('/', function(req, res, next) {
     } else {
 
         // Get data from request
-        var sender_uuid = req.body.sender_uuid;
-        var receiver_uuid = req.body.receiver_uuid;
+        var sender = req.body.sender;
+        var receiver = req.body.receiver;
         var timestamp = new Date().toISOString();
         var amount = req.body.amount;
 
         // Create document
         var document = {
-            "sender_uuid": sender_uuid,
-            "receiver_uuid": receiver_uuid,
+            "sender": {
+                "name": sender.name,
+                "uuid": sender.uuid
+            },
+            "receiver": {
+                "name": receiver.name,
+                "uuid": receiver.uuid
+            },
             "amount": amount,
             "timestamp": timestamp,
         };

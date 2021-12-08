@@ -15,10 +15,10 @@ router.post('/', function(req, res, next) {
     } else {
 
         // Get data from request
-        var sender_uuid = (sender_uuid === undefined) ? "Unretrievable" : req.body.sender_uuid;
-        var receiver_uuid = (receiver_uuid === undefined) ? "Unretrievable" : req.body.receiver_uuid;
+        var sender_uuid = req.body.sender_uuid;
+        var receiver_uuid = req.body.receiver_uuid;
         var timestamp = new Date().toISOString();
-        var amount = (amount === undefined) ? "Unretrievable" : req.body.amount;
+        var amount = req.body.amount;
 
         // Create document
         var document = {

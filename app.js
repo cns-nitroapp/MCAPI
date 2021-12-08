@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/transactions', transactionRouter);
-app.use('/global', transactionRouter);
+app.use('/global', globalRouter);
 //app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

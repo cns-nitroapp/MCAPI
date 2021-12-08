@@ -17,12 +17,14 @@ router.post('/', function(req, res, next) {
         // Get data from request
         var total = req.body.total;
         var average = req.body.average;
+        var amount = req.body.amount;
         var timestamp = new Date().toISOString();
 
         // Create document
         var document = {
             "total": total,
             "average": average,
+            "amount": amount,
             "timestamp": timestamp,
         };
 

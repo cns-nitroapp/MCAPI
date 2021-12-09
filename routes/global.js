@@ -49,7 +49,7 @@ router.get('/', async function(req, res, next) {
 
     const globaldata = await getGlobalStats();
     var document = {
-        "globaldata": globaldata,
+        "stats": globaldata,
         "timestamp": new Date().toISOString(),
     }
 

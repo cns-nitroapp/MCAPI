@@ -45,7 +45,7 @@ router.post('/', function(req, res, next) {
     }
 });
 
-app.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
     const globaldata = getGlobalStats();
     var document = {

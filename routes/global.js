@@ -47,7 +47,7 @@ router.post('/', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
 
-    const globaldata = getGlobalStats();
+    const globaldata = await getGlobalStats();
     var document = {
         "globaldata": globaldata,
         "timestamp": new Date().toISOString(),

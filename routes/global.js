@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 // Require createDocument from utils/database
-var createDocument = require('../utils/database').createDocument;
-var deleteNewest = require('../utils/database').deleteNewest;
+var { createDocument, deleteNewest, getGlobalStats } = require('../utils/database');
 
 // Post router with transaction data
 router.post('/', function(req, res, next) {
@@ -44,6 +43,18 @@ router.post('/', function(req, res, next) {
         res.status(200).send('Transaction created');
 
     }
+});
+
+app.get('/', function(req, res, next) {
+
+    const globaldata = getGlobalStats();
+    var document = {
+        "globaldata": globaldata,
+        "timestamp": new Date().toISOString(),
+    }
+
+    res.status(200).send(document);
+
 });
 
 module.exports = router;

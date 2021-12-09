@@ -45,7 +45,7 @@ router.post('/', function(req, res, next) {
     }
 });
 
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
 
     const globaldata = await getGlobalStats();
     var document = {

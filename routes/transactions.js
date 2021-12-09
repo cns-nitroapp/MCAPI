@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 // Require createDocument from utils/database
-var createDocument = require('../utils/database').createDocument;
+var { createDocument, getLastNDocuments } = require('../utils/database');
 
 // Post router with transaction data
 router.post('/', function(req, res, next) {
@@ -47,6 +47,21 @@ router.post('/', function(req, res, next) {
         res.status(200).send('Transaction created');
 
     }
+});
+
+router.get('/', async function(req, res, next) {
+
+    var n = 10;
+
+    const lastNDocuments = await getLastNDocuments("transactions", n);
+    var document = {
+        "transactions": lastNDocuments,
+        "amount": n,
+        "timestamp": new Date().toISOString()
+    }
+
+    res.status(200).send(document);
+
 });
 
 module.exports = router;

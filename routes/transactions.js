@@ -31,8 +31,7 @@ router.post('/', function(req, res, next) {
                 "uuid": receiver.uuid
             },
             "amount": amount,
-            "timestamp": timestamp,
-            "transaction-id": Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+            "timestamp": timestamp
         };
 
         // Create document in database

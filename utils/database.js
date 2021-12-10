@@ -65,6 +65,7 @@ async function getLastNDocuments(collection, n) {
     try {
         await client.connect();
         const result = await db.collection(collection).find().sort({ _id: -1 }).limit(n).toArray();
+        console.log(result);
         return result;
     } catch (err) {
         console.error(err);
@@ -78,6 +79,19 @@ async function getGlobalStats() {
     try {
         await client.connect();
         const result = await db.collection('global').find().sort({ _id: -1 }).limit(1).toArray();
+        return result;
+    } catch (err) {
+        console.error(err);
+    } finally {
+        client.close();
+    }
+}
+
+// Get document using field and value
+async function getDocument(collection, field, value) {
+    try {
+        await client.connect();
+        const result = await db.collection(collection).find({ [field]: value }).toArray();
         return result;
     } catch (err) {
         console.error(err);

@@ -13,8 +13,6 @@ async function createDocument(collection, document) {
         return result;
     } catch (err) {
         console.error(err);
-    } finally {
-        client.close();
     }
 }
 
@@ -42,8 +40,6 @@ async function deleteNewest(collection) {
         return result2;
     } catch (err) {
         console.error(err);
-    } finally {
-        client.close();
     }
 }
 
@@ -55,8 +51,6 @@ async function deleteDocument(collection, document) {
         return result;
     } catch (err) {
         console.error(err);
-    } finally {
-        client.close();
     }
 }
 
@@ -69,8 +63,6 @@ async function getLastNDocuments(collection, n) {
         return result;
     } catch (err) {
         console.error(err);
-    } finally {
-        client.close();
     }
 }
 
@@ -82,8 +74,6 @@ async function getGlobalStats() {
         return result;
     } catch (err) {
         console.error(err);
-    } finally {
-        client.close();
     }
 }
 

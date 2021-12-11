@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 require('dotenv').config();
 const uri = "mongodb+srv://root:" + process.env.MONGODB_PASSWORD + "@gralka.a25np.mongodb.net/Minecraft?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -92,5 +92,5 @@ async function getDocument(collection, field, value) {
 
 // Make accessible to other files
 module.exports = {
-    createDocument, findNewest, deleteNewest, deleteDocument, getLastNDocuments, getGlobalStats
+    createDocument, findNewest, deleteNewest, deleteDocument, getLastNDocuments, getGlobalStats, getDocument, getDocumentById
 };

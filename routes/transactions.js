@@ -1,7 +1,8 @@
 var express = require('express');
+const { ObjectId } = require('mongodb');
 var router = express.Router();
 // Require createDocument from utils/database
-var { createDocument, getLastNDocuments } = require('../utils/database');
+var { createDocument, getLastNDocuments, getDocument, getDocumentById } = require('../utils/database');
 
 // Post router with transaction data
 router.post('/', function(req, res, next) {
@@ -51,7 +52,7 @@ router.post('/', function(req, res, next) {
 
 router.get('/', async function(req, res, next) {
 
-    var n = 10;
+    var n = 25;
 
     const lastNDocuments = await getLastNDocuments("transactions", n);
     var document = {
@@ -62,6 +63,22 @@ router.get('/', async function(req, res, next) {
 
     res.status(200).send(document);
 
+});
+
+router.get('/:tid', async function(req, res, next) {
+
+        var tid = req.params.tid;
+        console.log(tid);
+    
+        const data = await getDocument("transactions", "_id", ObjectId(tid));
+        console.log(data);
+        var document = {
+            "transaction": data,
+            "timestamp": new Date().toISOString()
+        }
+    
+        res.status(200).send(document);
+    
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@ var express = require('express');
 const { ObjectId } = require('mongodb');
 var router = express.Router();
 // Require createDocument from utils/database
-var { createDocument, getLastNDocuments, getDocument, getDocumentById } = require('../utils/database');
+var { createDocument, getLastNDocuments, getDocument } = require('../utils/database');
 
 // Post router with transaction data
 router.post('/', function(req, res, next) {

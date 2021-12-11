@@ -92,5 +92,5 @@ async function getDocument(collection, field, value) {
 
 // Make accessible to other files
 module.exports = {
-    createDocument, findNewest, deleteNewest, deleteDocument, getLastNDocuments, getGlobalStats, getDocument, getDocumentById
+    createDocument, findNewest, deleteNewest, deleteDocument, getLastNDocuments, getGlobalStats, getDocument
 };

@@ -47,6 +47,7 @@ router.post('/', function(req, res, next) {
 
 router.get('/', async function(req, res, next) {
 
+    console.log(req.headers)
     const globaldata = await getGlobalStats();
     var document = {
         "stats": globaldata,

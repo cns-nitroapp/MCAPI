@@ -59,7 +59,6 @@ async function getLastNDocuments(collection, n) {
     try {
         await client.connect();
         const result = await db.collection(collection).find().sort({ _id: -1 }).limit(n).toArray();
-        console.log(result);
         return result;
     } catch (err) {
         console.error(err);

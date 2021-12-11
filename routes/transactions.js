@@ -5,7 +5,7 @@ var router = express.Router();
 var { createDocument, getLastNDocuments, getDocument } = require('../utils/database');
 
 const NodeCache = require('node-cache')
-const myCache = new NodeCache();
+const cache = new NodeCache();
 
 // Post router with transaction data
 router.post('/', function(req, res, next) {
@@ -55,6 +55,10 @@ router.post('/', function(req, res, next) {
 
 router.get('/', async function(req, res, next) {
 
+    if (cache.has(document)) {
+        res.status(200).send(cache.get(document));
+    } else {
+
     var n = 15;
 
     const lastNDocuments = await getLastNDocuments("transactions", n);
@@ -64,7 +68,9 @@ router.get('/', async function(req, res, next) {
         "timestamp": new Date().toISOString()
     }
 
+    cache.set(document, document, 3600);
     res.status(200).send(document);
+}
 
 });
 
